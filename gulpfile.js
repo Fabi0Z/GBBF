@@ -1,24 +1,42 @@
-var gulp        = require('gulp');
+var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
-var sass        = require('gulp-sass');
+var sass = require('gulp-sass');
+var cleanCSS = require('gulp-clean-css');
+var rename = require("gulp-rename");
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function() {
 
-    browserSync.init({
-        server: "./app"
-    });
+  browserSync.init({
+    server: "./app"
+  });
 
-    gulp.watch("app/scss/*.scss", ['sass']);
-    gulp.watch("app/*.html").on('change', browserSync.reload);
+  gulp.watch("app/scss/*.scss", ['sass']);
+  gulp.watch("app/*.html").on('change', browserSync.reload);
 });
 
-// Compile sass into CSS & auto-inject into browsers
-gulp.task('sass', function() {
-    return gulp.src("app/scss/style.scss")
-        .pipe(sass())
-        .pipe(gulp.dest("app/css"))
-        .pipe(browserSync.stream());
+// Compile SCSS
+gulp.task('css:compile', function() {
+  return gulp.src('app/scss/**/*.scss')
+    .pipe(sass.sync({
+      outputStyle: 'expanded'
+    }).on('error', sass.logError))
+    .pipe(gulp.dest('app/css'))
 });
+// Minify CSS
+gulp.task('css:minify', ['css:compile'], function() {
+  return gulp.src([
+      'app/css/*.css',
+      '!app/css/*.min.css'
+    ])
+    .pipe(cleanCSS())
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('app/css'))
+    .pipe(browserSync.stream());
+});
+// CSS
+gulp.task('sass', ['css:compile', 'css:minify']);
 
 gulp.task('default', ['serve']);
