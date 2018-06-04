@@ -1,8 +1,4 @@
-// _custom.scss import
-@import "custom.scss";
-
-// import welcome custom style, just delete it to recreate s tock bootstrap CSS
-@import "welcome.scss";
-
-// import Bootstrap from node modules
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import
+  "custom.scss", // _custom.scss import
+  "../../node_modules/bootstrap/scss/bootstrap.scss", // import Bootstrap from node modules
+  "welcome.scss"; // non Bootstrap scss
