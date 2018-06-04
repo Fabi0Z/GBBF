@@ -8488,7 +8488,6 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .nav-masthead .nav-link {
-  padding: 0.25rem 0;
   color: rgba(255, 255, 255, 0.5);
   border-bottom: 0.25rem solid transparent;
   background-color: transparent;
@@ -8506,7 +8505,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 @media (min-width: 48em) {
-  .nav-masthead .nav-masthead {
+  .nav-masthead {
     float: right;
   }
 }
