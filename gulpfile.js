@@ -3,6 +3,20 @@ var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
+var ts = require('gulp-typescript');
+var merge = require('merge2');
+
+// TypeScript project declaration
+var tsProject = ts.createProject({
+    declaration: true
+});
+
+// Compile TypeScript
+gulp.task('scripts', function() {
+    return gulp.src('ts/*.ts')
+        .pipe(tsProject())
+        .pipe(gulp.dest('app/js'));
+});
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function() {
