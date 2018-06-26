@@ -19,13 +19,14 @@ gulp.task('scripts', function() {
 });
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', ['sass', 'scripts'], function() {
 
   browserSync.init({
     server: "./app"
   });
 
   gulp.watch("scss/*.scss", ['sass']);
+  gulp.watch("ts/*.ts", ['scripts']);
   gulp.watch("app/*.html").on('change', browserSync.reload);
 });
 
@@ -37,6 +38,7 @@ gulp.task('css:compile', function() {
     }).on('error', sass.logError))
     .pipe(gulp.dest('app/css'))
 });
+
 // Minify CSS
 gulp.task('css:minify', ['css:compile'], function() {
   return gulp.src([
@@ -50,6 +52,7 @@ gulp.task('css:minify', ['css:compile'], function() {
     .pipe(gulp.dest('app/css'))
     .pipe(browserSync.stream());
 });
+
 // CSS
 gulp.task('sass', ['css:compile', 'css:minify']);
 
