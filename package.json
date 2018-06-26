@@ -25,7 +25,7 @@
   },
   "homepage": "https://gitlab.com/Fabi0Z/GBBF#README",
   "devDependencies": {
-    "browser-sync": "^2.24.4",
+    "browser-sync": "^2.24.5",
     "gulp": "^3.9.1",
     "gulp-sass": "^4.0.1",
     "install": "^0.11.0",
