@@ -11,13 +11,13 @@ gulp.task('serve', ['sass'], function() {
     server: "./app"
   });
 
-  gulp.watch("app/scss/*.scss", ['sass']);
+  gulp.watch("scss/*.scss", ['sass']);
   gulp.watch("app/*.html").on('change', browserSync.reload);
 });
 
 // Compile SCSS
 gulp.task('css:compile', function() {
-  return gulp.src('app/scss/**/*.scss')
+  return gulp.src('scss/**/*.scss')
     .pipe(sass.sync({
       outputStyle: 'expanded'
     }).on('error', sass.logError))
