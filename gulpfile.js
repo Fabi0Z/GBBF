@@ -4,7 +4,7 @@ var sass = require('gulp-sass');
 var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var ts = require('gulp-typescript');
-var merge = require('merge2');
+var uglify = require('gulp-uglify');
 
 // TypeScript project declaration
 var tsProject = ts.createProject({
@@ -12,11 +12,22 @@ var tsProject = ts.createProject({
 });
 
 // Compile TypeScript
-gulp.task('scripts', function() {
-    return gulp.src('ts/*.ts')
-        .pipe(tsProject())
-        .pipe(gulp.dest('app/js'));
+gulp.task('js:compile', function() {
+  return gulp.src('ts/**/*.ts')
+      .pipe(tsProject())
+      .pipe(gulp.dest('app/js'));
 });
+
+// Minify JavaScript
+gulp.task('js:minify', function () {
+  gulp.src('app/**/*.js')
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('app'))
+})
+
+// TypeScript
+gulp.task('scripts', ['js:compile', 'js:minify']);
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass', 'scripts'], function() {
