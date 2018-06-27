@@ -20,10 +20,13 @@ gulp.task('js:compile', function() {
 
 // Minify JavaScript
 gulp.task('js:minify', function () {
-  gulp.src('app/**/*.js')
+  gulp.src([
+      'app/js/**/*.js',
+      '!app/js/**/*.min.js'
+    ])
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest('app'))
+    .pipe(gulp.dest('app/js'))
 })
 
 // TypeScript
