@@ -1,4 +1,7 @@
 @import
-  "custom.scss", // _custom.scss import
-  "node_modules/bootstrap/scss/bootstrap.scss", // import Bootstrap from node modules
-  "welcome.scss"; // non Bootstrap scss
+  // Variables files import
+  "custom.scss",
+  // import Bootstrap from node modules
+  "node_modules/bootstrap/scss/bootstrap.scss",
+  // NON bootstrap scss
+  "welcome.scss"
