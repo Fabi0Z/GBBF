@@ -35,3 +35,8 @@ There are three main tasks in the gulpfile
 1. `gulp sass` that compile SASS and return CSS and minified CSS
 2. `gulp scripts` that compile TypeScript and return JavaScript and minified JavaScript
 3. `gulp serve` (launched as default action for `gulp` command) that run the prevoius functions, launch a local server and watch for file changes
+
+## Where should I put my scripts and my style sheets? 
+
+* Scripts go in `scripts` folder, they can be both TypeScript or JavaScript, gulp will find, compile and minify them
+* Style Sheets gon in `scss` folder, they can be both SASS or CSS, gulp will find, compile and minify them
