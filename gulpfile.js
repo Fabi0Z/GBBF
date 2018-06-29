@@ -22,7 +22,8 @@ gulp.task('js:compile', function() {
 gulp.task('js:minify', function () {
   gulp.src([
       'app/js/**/*.js',
-      '!app/js/**/*.min.js'
+      '!app/js/**/*.min.js',
+      'ts/**/*.js'
     ])
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
