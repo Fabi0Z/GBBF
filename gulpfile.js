@@ -58,7 +58,8 @@ gulp.task('css:compile', function() {
 gulp.task('css:minify', ['css:compile'], function() {
   return gulp.src([
       'app/css/*.css',
-      '!app/css/*.min.css'
+      '!app/css/*.min.css',
+      'scss/**/*.css'
     ])
     .pipe(cleanCSS())
     .pipe(rename({
