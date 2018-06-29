@@ -13,7 +13,7 @@ var tsProject = ts.createProject({
 
 // Compile TypeScript
 gulp.task('js:compile', function() {
-  return gulp.src('ts/**/*.ts')
+  return gulp.src('scripts/**/*.ts')
       .pipe(tsProject())
       .pipe(gulp.dest('app/js'));
 });
@@ -23,7 +23,7 @@ gulp.task('js:minify', function () {
   gulp.src([
       'app/js/**/*.js',
       '!app/js/**/*.min.js',
-      'ts/**/*.js'
+      'scripts/**/*.js'
     ])
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
@@ -41,7 +41,7 @@ gulp.task('serve', ['sass', 'scripts'], function() {
   });
 
   gulp.watch("scss/*.scss", ['sass']);
-  gulp.watch("ts/*.ts", ['scripts']);
+  gulp.watch("scripts/*.ts", ['scripts']);
   gulp.watch("app/*.html").on('change', browserSync.reload);
 });
 
