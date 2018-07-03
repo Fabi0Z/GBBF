@@ -38,9 +38,6 @@ gulp.task('js:minify', function() {
     .pipe(gulp.dest('app/js'))
 })
 
-// TypeScript
-gulp.task('scripts', ['js:compile', 'js:minify', 'js:copy']);
-
 // Static Server + watching scss/html/ts files
 gulp.task('serve', ['sass', 'scripts'], function() {
 
@@ -86,4 +83,8 @@ gulp.task('css:minify', ['css:compile'], function() {
 // CSS
 gulp.task('sass', ['css:compile', 'css:minify', 'css:copy']);
 
+// TypeScript
+gulp.task('scripts', ['js:compile', 'js:minify', 'js:copy']);
+
+// Default
 gulp.task('default', ['serve']);
