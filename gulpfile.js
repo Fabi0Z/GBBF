@@ -45,20 +45,20 @@ gulp.task('serve', ['sass', 'scripts'], function() {
     server: "./app"
   });
 
-  gulp.watch(['scss/*.scss', 'scss/*.css'], ['sass']);
+  gulp.watch(['style/*.scss', 'style/*.css'], ['sass']);
   gulp.watch(['scripts/*.ts', 'scripts/*.js'], ['scripts']);
   gulp.watch("app/*.html").on('change', browserSync.reload);
 });
 
 // Copy CSS
 gulp.task('css:copy', function() {
-  gulp.src('scss/**/*.css')
+  gulp.src('style/**/*.css')
     .pipe(gulp.dest('app/css'));
 });
 
 // Compile SCSS
 gulp.task('css:compile', function() {
-  return gulp.src('scss/**/*.scss')
+  return gulp.src('style/**/*.scss')
     .pipe(sass.sync({
       outputStyle: 'expanded'
     }).on('error', sass.logError))
@@ -70,7 +70,7 @@ gulp.task('css:minify', ['css:compile'], function() {
   return gulp.src([
       'app/css/*.css',
       '!app/css/*.min.css',
-      'scss/**/*.css'
+      'style/**/*.css'
     ])
     .pipe(cleanCSS())
     .pipe(rename({
