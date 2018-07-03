@@ -18,14 +18,14 @@ gulp.task('js:copy', function() {
 });
 
 // Compile TypeScript
-gulp.task('js:compile', function() {
+gulp.task('ts:compile', function() {
   return gulp.src('scripts/**/*.ts')
     .pipe(tsProject())
     .pipe(gulp.dest('app/js'));
 });
 
 // Minify JavaScript
-gulp.task('js:minify', function() {
+gulp.task('js:minify', ['ts:compile'], function() {
   gulp.src([
       'app/js/*.js',
       '!app/js/min/*'
@@ -65,7 +65,7 @@ gulp.task('scss:compile', function() {
 });
 
 // Minify CSS
-gulp.task('css:minify', ['css:compile'], function() {
+gulp.task('css:minify', ['scss:compile'], function() {
   return gulp.src([
       'app/css/*.css',
       '!app/css/min/*',
@@ -82,7 +82,7 @@ gulp.task('css:minify', ['css:compile'], function() {
 gulp.task('style', ['scss:compile', 'css:copy', 'css:minify']);
 
 // TypeScript
-gulp.task('scripts', ['js:compile', 'js:copy', 'js:minify']);
+gulp.task('scripts', ['ts:compile', 'js:copy', 'js:minify']);
 
 // Default
 gulp.task('default', ['serve']);
