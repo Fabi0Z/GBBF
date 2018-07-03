@@ -65,14 +65,13 @@ gulp.task('css:compile', function() {
 gulp.task('css:minify', ['css:compile'], function() {
   return gulp.src([
       'app/css/*.css',
-      '!app/css/*.min.css',
-      'style/**/*.css'
+      '!app/css/min/*',
     ])
     .pipe(cleanCSS())
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('app/css'))
+    .pipe(gulp.dest('app/css/min'))
     .pipe(browserSync.stream());
 });
 
