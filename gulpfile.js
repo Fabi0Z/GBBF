@@ -11,6 +11,12 @@ var tsProject = ts.createProject({
   declaration: true
 });
 
+// Copy JS
+gulp.task('js:copy', function() {
+  gulp.src('scripts/**/*.js')
+    .pipe(gulp.dest('app/js'));
+});
+
 // Compile TypeScript
 gulp.task('js:compile', function() {
   return gulp.src('scripts/**/*.ts')
@@ -33,7 +39,7 @@ gulp.task('js:minify', function() {
 })
 
 // TypeScript
-gulp.task('scripts', ['js:compile', 'js:minify']);
+gulp.task('scripts', ['js:compile', 'js:minify', 'js:copy']);
 
 // Static Server + watching scss/html/ts files
 gulp.task('serve', ['sass', 'scripts'], function() {
