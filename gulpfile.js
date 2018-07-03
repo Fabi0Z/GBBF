@@ -26,16 +26,12 @@ gulp.task('js:compile', function() {
 
 // Minify JavaScript
 gulp.task('js:minify', function() {
-  gulp.src([
-      'app/js/**/*.js',
-      '!app/js/**/*.min.js',
-      'scripts/**/*.js'
-    ])
+  gulp.src('app/js/**/*.js')
     .pipe(uglify())
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('app/js'))
+    .pipe(gulp.dest('app/js/min'))
 })
 
 // Static Server + watching scss/html/ts files
