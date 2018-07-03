@@ -38,7 +38,7 @@ gulp.task('js:minify', function() {
 })
 
 // Static Server + watching scss/html/ts files
-gulp.task('serve', ['sass', 'scripts'], function() {
+gulp.task('serve', ['style', 'scripts'], function() {
 
   browserSync.init({
     server: "./app"
@@ -56,7 +56,7 @@ gulp.task('css:copy', function() {
 });
 
 // Compile SCSS
-gulp.task('css:compile', function() {
+gulp.task('scss:compile', function() {
   return gulp.src('style/**/*.scss')
     .pipe(sass.sync({
       outputStyle: 'expanded'
@@ -79,7 +79,7 @@ gulp.task('css:minify', ['css:compile'], function() {
 });
 
 // CSS
-gulp.task('sass', ['css:compile', 'css:minify', 'css:copy']);
+gulp.task('style', ['scss:compile', 'css:minify', 'css:copy']);
 
 // TypeScript
 gulp.task('scripts', ['js:compile', 'js:minify', 'js:copy']);
