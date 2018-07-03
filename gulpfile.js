@@ -47,6 +47,12 @@ gulp.task('serve', ['sass', 'scripts'], function() {
   gulp.watch("app/*.html").on('change', browserSync.reload);
 });
 
+// Copy CSS
+gulp.task('css:copy', function() {
+  gulp.src('scss/**/*.css')
+    .pipe(gulp.dest('app/css'));
+});
+
 // Compile SCSS
 gulp.task('css:compile', function() {
   return gulp.src('scss/**/*.scss')
@@ -72,6 +78,6 @@ gulp.task('css:minify', ['css:compile'], function() {
 });
 
 // CSS
-gulp.task('sass', ['css:compile', 'css:minify']);
+gulp.task('sass', ['css:compile', 'css:minify', 'css:copy']);
 
 gulp.task('default', ['serve']);
