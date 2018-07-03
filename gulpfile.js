@@ -79,10 +79,10 @@ gulp.task('css:minify', ['css:compile'], function() {
 });
 
 // CSS
-gulp.task('style', ['scss:compile', 'css:minify', 'css:copy']);
+gulp.task('style', ['scss:compile', 'css:copy', 'css:minify']);
 
 // TypeScript
-gulp.task('scripts', ['js:compile', 'js:minify', 'js:copy']);
+gulp.task('scripts', ['js:compile', 'js:copy', 'js:minify']);
 
 // Default
 gulp.task('default', ['serve']);
