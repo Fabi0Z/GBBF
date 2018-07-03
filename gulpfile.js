@@ -35,7 +35,7 @@ gulp.task('js:minify', function() {
 // TypeScript
 gulp.task('scripts', ['js:compile', 'js:minify']);
 
-// Static Server + watching scss/html files
+// Static Server + watching scss/html/ts files
 gulp.task('serve', ['sass', 'scripts'], function() {
 
   browserSync.init({
