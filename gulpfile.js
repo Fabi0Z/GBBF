@@ -8,25 +8,27 @@ var uglify = require('gulp-uglify');
 
 // TypeScript project declaration
 var tsProject = ts.createProject({
-    declaration: true
+  declaration: true
 });
 
 // Compile TypeScript
 gulp.task('js:compile', function() {
   return gulp.src('scripts/**/*.ts')
-      .pipe(tsProject())
-      .pipe(gulp.dest('app/js'));
+    .pipe(tsProject())
+    .pipe(gulp.dest('app/js'));
 });
 
 // Minify JavaScript
-gulp.task('js:minify', function () {
+gulp.task('js:minify', function() {
   gulp.src([
       'app/js/**/*.js',
       '!app/js/**/*.min.js',
       'scripts/**/*.js'
     ])
     .pipe(uglify())
-    .pipe(rename({ suffix: '.min' }))
+    .pipe(rename({
+      suffix: '.min'
+    }))
     .pipe(gulp.dest('app/js'))
 })
 
@@ -40,8 +42,8 @@ gulp.task('serve', ['sass', 'scripts'], function() {
     server: "./app"
   });
 
-  gulp.watch("scss/*.scss", ['sass']);
-  gulp.watch("scripts/*.ts", ['scripts']);
+  gulp.watch(['scss/*.scss', 'scss/*.css'], ['sass']);
+  gulp.watch(['scripts/*.ts', 'scripts/*.js'], ['scripts']);
   gulp.watch("app/*.html").on('change', browserSync.reload);
 });
 
