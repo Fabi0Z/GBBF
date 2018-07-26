@@ -44,7 +44,7 @@ gulp.task('serve', ['style', 'scripts'], function() {
     server: "./app"
   });
 
-  gulp.watch(['style/*.scss', 'style/*.css'], ['sass']);
+  gulp.watch(['style/*.scss', 'style/*.css'], ['style']);
   gulp.watch(['scripts/*.ts', 'scripts/*.js'], ['scripts']);
   gulp.watch("app/*.html").on('change', browserSync.reload);
 });
