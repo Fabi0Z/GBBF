@@ -5,10 +5,18 @@ var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var ts = require('gulp-typescript');
 var uglify = require('gulp-uglify');
+var del = require('del');
 
 // TypeScript project declaration
 var tsProject = ts.createProject({
   declaration: true
+});
+
+// Delete JS
+gulp.task('js:delete', function() {
+  return del([
+    'app/js/**/*',
+  ]);
 });
 
 // Copy JS
@@ -82,7 +90,7 @@ gulp.task('css:minify', ['scss:compile'], function() {
 gulp.task('style', ['scss:compile', 'css:copy', 'css:minify']);
 
 // TypeScript
-gulp.task('scripts', ['ts:compile', 'js:copy', 'js:minify']);
+gulp.task('scripts', ['js:delete', 'ts:compile', 'js:copy', 'js:minify']);
 
 // Default
 gulp.task('default', ['serve']);
