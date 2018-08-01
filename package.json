@@ -25,11 +25,11 @@
   },
   "homepage": "https://gitlab.com/Fabi0Z/GBBF#README",
   "devDependencies": {
-    "browser-sync": "^2.24.5",
+    "browser-sync": "^2.24.6",
     "gulp": "^3.9.1",
     "gulp-sass": "^4.0.1",
     "install": "^0.11.0",
-    "npm": "^6.1.0"
+    "npm": "^6.2.0"
   },
   "dependencies": {
     "bootstrap": "^4.1.1",
