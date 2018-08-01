@@ -57,6 +57,13 @@ gulp.task('serve', ['style', 'scripts'], function() {
   gulp.watch("app/*.html").on('change', browserSync.reload);
 });
 
+// Delete CSS
+gulp.task('css:delete', function() {
+  return del([
+    'app/css/**/*',
+  ]);
+});
+
 // Copy CSS
 gulp.task('css:copy', function() {
   gulp.src('style/**/*.css')
@@ -87,7 +94,7 @@ gulp.task('css:minify', ['scss:compile'], function() {
 });
 
 // CSS
-gulp.task('style', ['scss:compile', 'css:copy', 'css:minify']);
+gulp.task('style', ['css:delete', 'scss:compile', 'css:copy', 'css:minify']);
 
 // TypeScript
 gulp.task('scripts', ['js:delete', 'ts:compile', 'js:copy', 'js:minify']);
