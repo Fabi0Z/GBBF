@@ -6,6 +6,8 @@ var rename = require("gulp-rename");
 var ts = require('gulp-typescript');
 var uglify = require('gulp-uglify');
 var del = require('del');
+var less = require('gulp-less');
+var path = require('path');
 
 // TypeScript project declaration
 var tsProject = ts.createProject({
@@ -79,6 +81,15 @@ gulp.task('scss:compile', function() {
     .pipe(gulp.dest('app/css'))
 });
 
+// Compile LESS
+gulp.task('less:compile', function () {
+  return gulp.src('style/**/*.less')
+    .pipe(less({
+      paths: [ path.join(__dirname, 'less', 'includes') ]
+    }))
+    .pipe(gulp.dest('app/css'));
+});
+
 // Minify CSS
 gulp.task('css:minify', ['scss:compile'], function() {
   return gulp.src([
@@ -94,7 +105,7 @@ gulp.task('css:minify', ['scss:compile'], function() {
 });
 
 // CSS
-gulp.task('style', ['css:delete', 'scss:compile', 'css:copy', 'css:minify']);
+gulp.task('style', ['css:delete', 'scss:compile', 'less:compile', 'css:copy', 'css:minify']);
 
 // TypeScript
 gulp.task('scripts', ['js:delete', 'ts:compile', 'js:copy', 'js:minify']);
