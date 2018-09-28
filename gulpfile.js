@@ -15,8 +15,8 @@ var tsProject = ts.createProject({
 // Initialize Project (Copy JavaScript from various modules)
 gulp.task('init', function() {
   // Popper JS
-  gulp.src('node_modules/popper.js/dist/popper.js')
-    .pipe(gulp.dest('scripts'));
+  gulp.src('node_modules/popper.js/dist/popper.min.js')
+    .pipe(gulp.dest('app/js/min'));
 });
 
 // Delete JS
