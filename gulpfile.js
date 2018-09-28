@@ -20,6 +20,9 @@ gulp.task('init', function() {
   // jQuery
   gulp.src('node_modules/jquery/dist/jquery.min.js')
     .pipe(gulp.dest('app/js/min'));
+  // Bootstrap JS
+  gulp.src('node_modules/bootstrap/dist/js/bootstrap.min.js')
+    .pipe(gulp.dest('app/js/min'));
 });
 
 // Delete JS
