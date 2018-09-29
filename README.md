@@ -10,7 +10,7 @@ Just clone this repo on your machine and run
 ```bash
 npm install
 ```
-for installing all the required packages to run GBBF, then, to start working just launch
+install all the required packages to run GBBF, then, to start working just launch
 
 ```bash
 gulp
@@ -28,13 +28,25 @@ If your machine doesn't recognize the `gulp` command, make sure to have globally
 npm install --global gulp-cli
 ```
 
+#### Initialize Project
+
+You can reinitialize a gulp project just running
+
+```bash
+gulp init
+```
+
+And it will copy all the necessary minified JS files for make GBBF work
+
+
 ## Gulp tasks
 
-There are three main tasks in the gulpfile
+There are four main tasks in the gulpfile
 
 1. `gulp style` that compile SASS and return CSS and minified CSS
 2. `gulp scripts` that compile TypeScript and return JavaScript and minified JavaScript
 3. `gulp serve` (launched as default action for `gulp` command) that run the prevoius functions, launch a local server and watch for file changes
+4. `gulp init` that will copy minified JS for Bootstrap, jQuery and Popper.js
 
 ## Where should I put my scripts and my style sheets?
 
