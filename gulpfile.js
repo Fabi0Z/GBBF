@@ -48,18 +48,6 @@ gulp.task('ts:compile', function() {
 });
 
 // Minify JavaScript
-// gulp.task('js:minify', ['ts:compile'], function() {
-//   gulp.src([
-//       'app/js/*.js',
-//       '!app/js/min/*'
-//     ])
-//     .pipe(uglify())
-//     .pipe(rename({
-//       suffix: '.min'
-//     }))
-//     .pipe(gulp.dest('app/js/min'))
-// })
-
 gulp.task('js:minify', ['ts:compile'], function() {
   return gulp.src([
       'app/js/*.js',
